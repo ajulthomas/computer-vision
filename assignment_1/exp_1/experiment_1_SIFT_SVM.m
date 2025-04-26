@@ -144,14 +144,14 @@ options = struct('UseParallel', true);
 % fitcecoc uses multiple SVM learners and a 'One-vs-One' encoding scheme.
 SVMClassifier = fitcecoc(trainingFeatures, trainingImageDS.Labels, 'Learners', t, ...
     'OptimizeHyperparameters', {'Lambda'}, ...
-    'HyperparameterOptimizationOptions', options);%
+    'HyperparameterOptimizationOptions', options);
 %% Test the accuracy on the test partition
 
 YPred = predict(SVMClassifier, testFeatures);
 YTest = testImageDS.Labels;
 
 % Calculate overall accuracy
-accuracy = sum(YPred == YTest)/numel(YTest) % Output on command line
+accuracy = sum(YPred == YTest)/numel(YTest); % Output on command line
 
 % Show confusion matrix in figure
 [m, order] = confusionmat(YTest, YPred);
