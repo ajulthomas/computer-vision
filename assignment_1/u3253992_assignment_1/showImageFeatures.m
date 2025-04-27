@@ -1,5 +1,9 @@
 % showImageFeatures.m
 function hogFeatureSize = showImageFeatures(imageDS, hog, cellSize)
+    if nargin < 2
+        hog = false;
+        cellSize = [];
+    end
     reset(imageDS);
     hogFeatureSize = 0;
     
