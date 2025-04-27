@@ -9,6 +9,7 @@ function [trainingImageNames, validationImageNames, testImageNames, classNames, 
 
     if nargin < 2
         bb = false;  % Default: if bb not given, set it to false
+        disp("No bounding Box");
     end
 
     % Load basic data
@@ -29,6 +30,7 @@ function [trainingImageNames, validationImageNames, testImageNames, classNames, 
 
     % Load bounding boxes if requested
     if bb
+        disp("Reading bounding box data")
         boundingBoxes = readtable(fullfile(folder, "bounding_boxes.txt"), 'ReadVariableNames', false);
         boundingBoxes.Properties.VariableNames = {'index', 'x', 'y', 'w', 'h'};
     else
