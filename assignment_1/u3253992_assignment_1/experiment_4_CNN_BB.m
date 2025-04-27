@@ -10,18 +10,18 @@ rng(42);
 folder = "C:\Users\u3253992\workspace\computer-vision\assignment_1\u3253992_assignment_1\data\CUB_200_2011_Subset20classes\";
 %% Load dataset
 
-[trainingImageNames, validationImageNames, testImageNames, classNames, imageClassLabels] = loadDataset(folder);
+[trainingImageNames, validationImageNames, testImageNames, classNames, imageClassLabels, boundingBoxes] = loadDataset(folder, true);
 numClasses = height(classNames);
 %% Create datastores
 
 disp('Training set class distribution:');
-trainingImageDS = createImageDatastore(trainingImageNames, folder);
+trainingImageDS = createImageDatastore(trainingImageNames, folder, true, boundingBoxes);
 
 disp('Validation set class distribution:');
-validationImageDS = createImageDatastore(validationImageNames, folder);
+validationImageDS = createImageDatastore(validationImageNames, folder, true, boundingBoxes);
 
 disp('Test set class distribution:');
-testImageDS = createImageDatastore(testImageNames, folder);
+testImageDS = createImageDatastore(testImageNames, folder, true, boundingBoxes);
 %% Resize image datastores and combine them with the labels
 
 % targetSize = [128, 128];
@@ -86,7 +86,6 @@ options = trainingOptions('adam', ...
 
 % model training
 simpleCNN = trainNetwork(trainCDS, layers, options);
-
 %% Evaluate the model
 
 [trainAccuracy, trainPredictions] = evaluateClassifier(simpleCNN, trainCDS, trainingImageDS.Labels, true);

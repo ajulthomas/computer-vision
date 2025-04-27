@@ -31,7 +31,7 @@ valCDS = resizeCombineDatastore(validationImageDS, targetSize);
 testCDS = resizeCombineDatastore(testImageDS, targetSize);
 %% Show example images
 
-showImageFeatures(trainCDS)
+showImage(trainCDS)
 %% Enables GPU
 
 [device, useGPU] = enableGPU();
