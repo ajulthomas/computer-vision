@@ -1,5 +1,5 @@
-% trainNaiveBayesClassifier.m
-function NaiveBayesModel = trainNaiveBayesClassifier(trainFeatures, trainLabels, kfold)
+% trainNBClassifier.m
+function NaiveBayesModel = trainNBClassifier(trainFeatures, trainLabels, kfold)
 % trainNaiveBayesClassifier - Train a Naive Bayes classifier with hyperparameter tuning and k-fold cross-validation
 %
 % INPUTS:
